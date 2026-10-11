@@ -1,2 +1,1 @@
-
-Message from feature branch - conflict resolved
+Message updated in feature branch
