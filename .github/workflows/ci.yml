@@ -1,23 +1,35 @@
-
 name: Gitflow CI
 
 on: [push, pull_request]
 
 jobs:
-  test:
+  checks:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Check repository
+        run: |
+          echo "Gitflow demo CI is running"
+          ls -la
+          test -f README.md
+          echo "Repository check passed"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Lint Python syntax
+      - name: Install linter
+        run: pip install ruff
+
+      - name: Check Python syntax
         run: python -m compileall -q .
+
+      - name: Run linting
+        run: ruff check app.py test_app.py
 
       - name: Run unit tests
         run: python -m unittest discover -v
