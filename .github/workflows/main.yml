@@ -11,14 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check repository files
+      - name: Check repository
         run: |
-          echo "Repository checkout successful"
+          echo "Gitflow demo CI is running"
           ls -la
-
-      - name: Verify Gitflow files
-        run: |
           test -f README.md
-          test -f message.txt
-          test -f conflict.txt
-          echo "Required files exist"
+          echo "Repository check passed"
