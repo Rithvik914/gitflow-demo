@@ -1,4 +1,3 @@
-
 name: Gitflow CI
 
 on: [push, pull_request]
@@ -17,3 +16,17 @@ jobs:
           ls -la
           test -f README.md
           echo "Repository check passed"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install linter
+        run: pip install ruff
+
+      - name: Run linting
+        run: ruff check app.py test_app.py
+
+      - name: Run automated tests
+        run: python -m unittest -v
