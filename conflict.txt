@@ -1,2 +1,2 @@
 Message updated in feature branch
-Message updated in develop branchsss
+Message updated in develop branch
