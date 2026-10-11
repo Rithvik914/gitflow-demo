@@ -1,0 +1,24 @@
+
+name: Gitflow CI
+
+on: [push, pull_request]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check repository files
+        run: |
+          echo "Repository checkout successful"
+          ls -la
+
+      - name: Verify Gitflow files
+        run: |
+          test -f README.md
+          test -f message.txt
+          test -f conflict.txt
+          echo "Required files exist"
